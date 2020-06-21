@@ -4,5 +4,14 @@
  * @returns {boolean}
  */
 function checkSpam(str) {
-  // ваш код...
+
+  const poker = '1XBET';
+  const threeX = 'XXX';
+  str = str.toLocaleUpperCase();
+
+  if (str.includes(poker) || str.includes(threeX)){
+    return true;
+  }
+  return false;
+    
 }
