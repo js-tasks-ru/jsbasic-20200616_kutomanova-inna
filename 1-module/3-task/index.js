@@ -4,5 +4,11 @@
  * @returns {string}
  */
 function ucFirst(str) {
-  // ваш код...
+
+  if (str === '') {
+    return str;
+  }
+
+  str = str.charAt(0).toLocaleUpperCase() + str.substr(1);
+  return str;
 }
