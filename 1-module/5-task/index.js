@@ -11,4 +11,4 @@ function truncate(str, maxlength) {
   }
   return str;
 }
-truncate('Вот, что мне хотелось бы сказать на эту тему:', 20);
+
