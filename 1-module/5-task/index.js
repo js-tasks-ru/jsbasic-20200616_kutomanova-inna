@@ -6,14 +6,14 @@
  */
 function truncate(str, maxlength) {
 
- if (str.length > maxlength) {
-    str = str.slice(0, maxlength - 1) + "…";  
-  }
-
-if (maxlength = 0) {
+if (maxlength == 0) {
     str = "";  
-  }
-    return str;
+} else 
+if (str.length > maxlength) 
+{
+  str = str.slice(0, maxlength - 1) + "…";  
+  
+} 
+return str;
 }
-
 
