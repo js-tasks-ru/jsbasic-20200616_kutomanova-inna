@@ -6,7 +6,7 @@
  */
 function truncate(str, maxlength) {
 
-if (maxlength == 0) {
+if (maxlength <= 0) {
     str = "";  
 } else 
 if (str.length > maxlength) 
