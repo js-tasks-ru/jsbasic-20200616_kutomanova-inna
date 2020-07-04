@@ -11,4 +11,4 @@ function getMinMax(Str) {
         max: Math.max(...strToArr)
     }
     return result;
-}  
+}
