@@ -3,6 +3,7 @@
  * @param {Object[]} friends
  * @return {HTMLUListElement}
  */
+
 function makeFriendsList(friends) {
   let newUl = document.createElement('ul');
   for (item of friends) {
