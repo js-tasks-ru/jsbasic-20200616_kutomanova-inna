@@ -9,18 +9,18 @@ thead {
     font-weight: 700;
 }
 
-.male td {
+.male {
     background-color: #65bff3;
 }
 
-.female td {
+.female {
     background-color: #932bb3;
 }
 
-.available td {
+.available {
     border: 2px solid green;
 }
 
-.unavailable td {
+.unavailable {
     border: 2px solid red;
 }
