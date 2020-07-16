@@ -43,11 +43,11 @@ export default class ProductCard {
     divCardBody.appendChild(divCardTitle);
     divCardBody.appendChild(cardButton);
     
-    new CustomEvent("product-add", { 
-    detail: this.product.id,
-    bubbles: true,
-    })
+    this.elem.onclick = ev => {
+      this.elem.dispatchEvent(new CustomEvent("product-add", { 
+        detail: this.product.id,
+        bubbles: true,
+      }));
+    }
   }
 }
-
-

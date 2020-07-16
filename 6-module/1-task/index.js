@@ -32,6 +32,8 @@ export default class UserTable {
   constructor(rows) {
     this.rows = rows;
     this.elem = document.createElement('table');
+    let tbody = document.createElement('tbody');
+    this.elem.appendChild(tbody);
 
     for (let i = 0; i < rows.length; i++) {
       let tr = document.createElement('tr');
@@ -46,10 +48,10 @@ export default class UserTable {
       td.innerHTML = '<button>X</button>';
       let buttonX = td.lastChild;
       tr.appendChild(td);
-      this.elem.appendChild(tr);
+      tbody.appendChild(tr);
 
       function hideTr() {
-        tr.style.display = "none";
+        tr.remove();
       }
 
       buttonX.addEventListener('click', hideTr);
