@@ -84,10 +84,14 @@ export default class Carousel {
     }
     
     this.elem.onclick = ev => {
-      this.elem.dispatchEvent(new CustomEvent("product-add", { 
-        detail: this.slides.id,
+      let button = ev.target.closest('.carousel__button');
+      if (button) {
+        this.elem.dispatchEvent(new CustomEvent("product-add", { 
+        detail: ev.target.closest('[data-id]').dataset.id,
         bubbles: true,
       }));
+      
+      }
     }
 
     this.divArrowLeft.style.display = "none";
