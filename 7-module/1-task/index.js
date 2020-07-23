@@ -7,7 +7,7 @@ export default class RibbonMenu {
     this.elem.classList.add('ribbon');
     this.elem.onclick = ev => {
       this.elem.dispatchEvent(new CustomEvent("ribbon-select", {
-        detail: this.categories.id,
+        detail: ev.categories.id,
         bubbles: true,
       }));
     }
