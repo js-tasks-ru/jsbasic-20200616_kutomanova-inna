@@ -9,7 +9,6 @@ export default class StepSlider {
 
     let sliderThumb = document.createElement('div');
     sliderThumb.classList.add('slider__thumb');
-    //sliderThumb.style.left = '50%';
     this.elem.appendChild(sliderThumb);
 
     this.sliderValue = document.createElement('span');
@@ -19,7 +18,6 @@ export default class StepSlider {
 
     let sliderProgress = document.createElement('div');
     sliderProgress.classList.add('slider__progress');
-    //sliderProgress.style.width = '50%';
     this.elem.appendChild(sliderProgress);
     
     let sliderSteps = document.createElement('div');
@@ -58,18 +56,12 @@ export default class StepSlider {
 
       thumb.style.left = `${leftPercents}%`;
       progress.style.width = `${leftPercents}%`;
-      //debugger
-
     }
-
   }
 
   sliderClick(ev) {
-    let fff = ev.target.className;
     let left = ev.clientX - this.elem.getBoundingClientRect().left;
     let leftRelative = Math.round((this.steps - 1) * left / this.elem.offsetWidth);
     this.setSliderPosition(leftRelative);
-    //debugger
   }
-
 }
