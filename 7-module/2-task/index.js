@@ -2,72 +2,70 @@ import createElement from '../../assets/lib/create-element.js';
 
 export default class Modal {
   constructor() {
-    this.divModal= document.createElement('div');
-    this.divModal.classList.add('modal');
-    
-    document.addEventListener('keydown', this.event.bind(this));
-    
-    let divModalOverlay = document.createElement('div');
-    divModalOverlay.classList.add('modal__overlay');
-    this.divModal.appendChild(divModalOverlay);
+    this.render();
 
-    let divModalInner = document.createElement('div');
-    divModalInner.classList.add('modal__inner');
-    this.divModal.appendChild(divModalInner);
+    this.elem.addEventListener('click', (event) => this.onClick(event));
+  }
 
-    let divModalHeader = document.createElement('div');
-    divModalHeader.classList.add('modal__header');
-    divModalInner.appendChild(divModalHeader);
+  render() {
+    this.elem = createElement(`
+      <div class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__inner">
+          <div class="modal__header">
+            <button type="button" class="modal__close">
+              <img src="/assets/images/icons/cross-icon.svg" alt="close-icon" />
+            </button>
+            <h3 class="modal__title"></h3>
+          </div>
+          <div class="modal__body"></div>
+        </div>
+      </div>
+    `);
+  }
 
-    let buttonModalClose = document.createElement('button');
-    buttonModalClose.classList.add('modal__close');
-    divModalHeader.appendChild(buttonModalClose);
-
-    let imgButtonX = document.createElement('img');
-    imgButtonX.setAttribute('src', '/assets/images/icons/cross-icon.svg');
-    imgButtonX.setAttribute('alt', 'close-icon');
-    buttonModalClose.appendChild(imgButtonX);
-    imgButtonX.addEventListener('click', this.close.bind(this));
-
-    this.ModalTitle = document.createElement('h3');
-    this.ModalTitle.classList.add('modal__title');
-    this.ModalTitle.innerHTML = 'Заголовок модального окна';
-    divModalHeader.appendChild(this.ModalTitle);
-
-    this.divModalBody = document.createElement('div');
-    this.divModalBody.classList.add('modal__body');
-    divModalInner.appendChild(this.divModalBody);
-       
+  sub(ref) {
+    return this.elem.querySelector(`.modal__${ref}`);
   }
 
   open() {
-    let divContainer = document.querySelector('.container');
-    divContainer.appendChild(this.divModal);
-    let body = document.querySelector('body');
-    body.classList.add('is-modal-open');
+    document.body.append(this.elem);
+    document.body.classList.add('is-modal-open');
+
+    this._keydownEventListener = (event) => this.onDocumentKeyDown(event);
+    document.addEventListener('keydown', this._keydownEventListener);
+
+    if (this.elem.querySelector('[autofocus]')) {
+      this.elem.querySelector('[autofocus]').focus();
+    }
   }
 
-  setTitle(Title_name) {
-    this.ModalTitle.innerHTML = Title_name;
+  onClick(event) {
+    if (event.target.closest('.modal__close')) {
+      event.preventDefault();
+      this.close();
+    }
   }
 
-  setBody(Div_body){
-    this.divModalBody.innerHTML = '';
-    this.divModalBody.appendChild(Div_body);
+  onDocumentKeyDown(event) {
+    if (event.code === 'Escape') {
+      event.preventDefault();
+      this.close();
+    }
+  }
+
+  setTitle(title) {
+    this.sub('title').textContent = title;
+  }
+
+  setBody(node) {
+    this.sub('body').innerHTML = '';
+    this.sub('body').append(node);
   }
 
   close() {
-    
-    let divContainer = document.querySelector('.container');
-    divContainer.removeChild(this.divModal);
-    let body = document.querySelector('body');
-    body.classList.remove('is-modal-open');
-    
-  }
-
-  event() {
-    if (event.code == 'Escape') {
-      this.close();
-    }
+    document.removeEventListener('keydown', this._keydownEventListener);
+    document.body.classList.remove('is-modal-open');
+    this.elem.remove();
   }
 }

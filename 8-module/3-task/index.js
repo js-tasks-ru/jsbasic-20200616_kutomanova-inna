@@ -1,64 +1,67 @@
 export default class Cart {
   cartItems = []; // [product: {...}, count: N]
-
   constructor(cartIcon) {
     this.cartIcon = cartIcon;
   }
 
   addProduct(product) {
-    let pos_in_List = this.cartItems.findIndex((item) => item.product.name === product.name);
-
-    if (pos_in_List > -1) {
-      this.cartItems[pos_in_List].count += 1;
-
+    // ваш код
+    let cartItem = this.cartItems.find(
+      item => item.product.id == product.id
+    );
+    if (!cartItem) {
+      cartItem = {
+        product,
+        count: 1
+      };
+      this.cartItems.push(cartItem);
     } else {
-      this.cartItems.push({ product: product, count: 1 });
+      cartItem.count++;
     }
-    this.onProductUpdate(this.cartItems);
+
+    this.onProductUpdate(cartItem);
   }
 
   updateProductCount(productId, amount) {
-    let pos_in_List = this.cartItems.findIndex((item) => item.product.id === productId);
+    // ваш код
+    let cartItem = this.cartItems.find(item => item.product.id == productId);
+    cartItem.count += amount;
 
-    if (pos_in_List > -1) {
-      this.cartItems[pos_in_List].count += amount;
-
-      if (this.cartItems[pos_in_List].count === 0) {
-        this.cartItems.splice(pos_in_List, 1);
-      }
-
-      this.onProductUpdate(this.cartItems);
-
+    if (cartItem.count === 0) {
+      this.cartItems.splice(this.cartItems.indexOf(cartItem), 1);
     }
-  }
 
-  isEmpty() {
-    if (this.cartItems.length == 0) {
-      return true;
-    }
-    return false;
-  }
-
-  getTotalCount() {
-    let result = this.cartItems.reduce(function (sum, current) {
-      return sum + current.count;
-    }, 0);
-    return result;
-  }
-
-  getTotalPrice() {
-    let result = this.cartItems.reduce(function (sum, current) {
-      return sum + current.count * current.product.price;
-    }, 0);
-
-    return result;
-
+    this.onProductUpdate(cartItem);
   }
 
   onProductUpdate() {
     // реализуем в следующей задаче
 
     this.cartIcon.update(this);
+  }
+
+  isEmpty() {
+    // ваш код
+    return this.cartItems.length === 0;
+  }
+
+  getTotalCount() {
+    // ваш код
+    return this.cartItems.reduce((sum, item) => sum + item.count, 0);
+  }
+
+  getTotalPrice() {
+    // ваш код
+  }
+
+  onProductUpdate() {
+    // реализуем в следующей задаче
+
+    this.cartIcon.update(this);
+    return this.cartItems.reduce(
+      (sum, item) => sum + item.product.price * item.count,
+      0
+    );
   }
 }
 
