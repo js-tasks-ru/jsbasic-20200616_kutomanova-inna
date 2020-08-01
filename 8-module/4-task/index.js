@@ -11,7 +11,10 @@ export default class Cart {
   }
 
   addProduct(product) {
+<<<<<<< HEAD
     // СКОПИРУЙТЕ СЮДЯ СВОЙ КОД
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
     let cartItem = this.cartItems.find(
       item => item.product.id == product.id
     );
@@ -29,7 +32,10 @@ export default class Cart {
   }
 
   updateProductCount(productId, amount) {
+<<<<<<< HEAD
     // СКОПИРУЙТЕ СЮДЯ СВОЙ КОД
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
     let cartItem = this.cartItems.find(item => item.product.id == productId);
     cartItem.count += amount;
 
@@ -41,17 +47,26 @@ export default class Cart {
   }
 
   isEmpty() {
+<<<<<<< HEAD
     // СКОПИРУЙТЕ СЮДЯ СВОЙ КОД
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
     return this.cartItems.length === 0;
   }
 
   getTotalCount() {
+<<<<<<< HEAD
     // СКОПИРУЙТЕ СЮДЯ СВОЙ КОД
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
     return this.cartItems.reduce((sum, item) => sum + item.count, 0);
   }
 
   getTotalPrice() {
+<<<<<<< HEAD
     // СКОПИРУЙТЕ СЮДЯ СВОЙ КОД
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
     return this.cartItems.reduce(
       (sum, item) => sum + item.product.price * item.count,
       0
@@ -109,7 +124,10 @@ export default class Cart {
   }
 
   renderModal() {
+<<<<<<< HEAD
     // ...ваш код
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
     this.modal = new Modal();
 
     this.modal.setTitle("Your order");
@@ -137,8 +155,11 @@ export default class Cart {
     this.modal.open();
   }
 
+<<<<<<< HEAD
   onProductUpdate() {
     // ...ваш код
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
   onModalBodyClick = (event) => {
     if (event.target.closest(".cart-counter__button")) {
       let productElem = event.target.closest("[data-product-id]");
@@ -174,8 +195,11 @@ export default class Cart {
     this.modalBody.querySelector(`.cart-buttons__info-price`).innerHTML = '€' + this.getTotalPrice().toFixed(2);
   }
 
+<<<<<<< HEAD
   onSubmit(event) {
     // ...ваш код
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
   async onSubmit(event) {
     event.preventDefault();
 

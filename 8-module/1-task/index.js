@@ -75,8 +75,4 @@ export default class CartIcon {
     document.addEventListener('scroll', () => this.updatePosition());
     window.addEventListener('resize', () => this.updatePosition());
   }
-
-  updatePosition() {
-    // ваш код ...
-  }
 }

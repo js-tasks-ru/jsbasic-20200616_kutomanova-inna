@@ -1,3 +1,5 @@
+import createElement from '../../assets/lib/create-element.js';
+
 export default class StepSlider {
   constructor({ steps, value = 0 }) {
     this.steps = steps;
@@ -123,4 +125,8 @@ export default class StepSlider {
     return this.elem.querySelector(`.slider__${ref}`);
   }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9

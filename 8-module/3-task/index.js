@@ -5,7 +5,10 @@ export default class Cart {
   }
 
   addProduct(product) {
+<<<<<<< HEAD
     // ваш код
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
     let cartItem = this.cartItems.find(
       item => item.product.id == product.id
     );
@@ -23,7 +26,10 @@ export default class Cart {
   }
 
   updateProductCount(productId, amount) {
+<<<<<<< HEAD
     // ваш код
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
     let cartItem = this.cartItems.find(item => item.product.id == productId);
     cartItem.count += amount;
 
@@ -41,16 +47,23 @@ export default class Cart {
   }
 
   isEmpty() {
+<<<<<<< HEAD
     // ваш код
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
     return this.cartItems.length === 0;
   }
 
   getTotalCount() {
+<<<<<<< HEAD
     // ваш код
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
     return this.cartItems.reduce((sum, item) => sum + item.count, 0);
   }
 
   getTotalPrice() {
+<<<<<<< HEAD
     // ваш код
   }
 
@@ -58,6 +71,8 @@ export default class Cart {
     // реализуем в следующей задаче
 
     this.cartIcon.update(this);
+=======
+>>>>>>> e7dec1a13d3ad714b7dd43f2e1e8aea4fd6828e9
     return this.cartItems.reduce(
       (sum, item) => sum + item.product.price * item.count,
       0
